@@ -3,7 +3,7 @@ import { Field,reduxForm } from 'redux-form';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {CreateArticle} from '../actions';
-import { alertActions } from '../actions/alertActions';
+
 
 class NewArticle extends Component {
 
