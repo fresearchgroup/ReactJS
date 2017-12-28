@@ -11,7 +11,7 @@ class NewArticle extends Component {
   onSubmit(values) {
 
   this.props.CreateArticle(values , () => {
-  alertActions.success('New Article Added');
+  
   this.props.history.push('/');
 
 });
@@ -108,17 +108,12 @@ function validate(values){
 }
 
 
-function mapStatetoProps(state){
-  
-  return {alert : state.alerts.alert};
-
-}
 
 
 
 export default reduxForm({
 validate,
  form : 'NewArticleForm'
-}) (connect (null,{mapStatetoProps,CreateArticle,alertActions}) (NewArticle)
+}) (connect (null,{CreateArticle}) (NewArticle)
 
 );
