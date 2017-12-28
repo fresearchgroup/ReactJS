@@ -3,7 +3,7 @@ import { Field,reduxForm } from 'redux-form';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {CreateArticle} from '../actions';
-
+import { alertActions } from '../actions/alertActions';
 
 class NewArticle extends Component {
 
@@ -11,7 +11,7 @@ class NewArticle extends Component {
   onSubmit(values) {
 
   this.props.CreateArticle(values , () => {
-  
+  alertActions.success('New Article Added');
   this.props.history.push('/');
 
 });
@@ -108,13 +108,17 @@ function validate(values){
 }
 
 
+function mapStatetoProps(state){
+  
+  return {alert : state.alerts.alert};
 
+}
 
 
 
 export default reduxForm({
 validate,
  form : 'NewArticleForm'
-}) (connect (null,{CreateArticle}) (NewArticle)
+}) (connect (null,{mapStatetoProps,CreateArticle,alertActions}) (NewArticle)
 
 );
